@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass">
+  <Vendor>
+    <Name>C++ Module Vendor</Name>
+  </Vendor>
+  <DataTypes ><DataType><Name GUID="{62dbd04a-4a50-42ef-bfe8-75d8163c328a}">I_ChildIncrement</Name><BaseType GUID="{00000001-0000-0000-e000-000000000064}">ITcUnknown</BaseType><Method><Name>Increment</Name><ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType></Method></DataType><DataType><Name GUID="{6e3c37a3-8dbc-4092-a431-0bdb0e779c3e}">I_ParentRegister</Name><BaseType GUID="{00000001-0000-0000-e000-000000000064}">ITcUnknown</BaseType><Method><Name>Register</Name><ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType><Parameter><Name>iPtrChild</Name><Type GUID="{00000012-0000-0000-e000-000000000064}">ITComObject</Type></Parameter></Method><Hides><Hide GUID="{fa65bd1f-52e8-4dc4-a848-1012a9acbe82}" /><Hide GUID="{4f1578fe-32a0-4a71-984e-f26e7d558230}" /><Hide GUID="{0f48bd63-061e-47ad-a57c-78849ec17c17}" /><Hide GUID="{c71a6fb1-4081-40f1-a47a-d919e723f49b}" /><Hide GUID="{1136cfc0-8843-41bc-bc70-a94ee326b2e0}" /><Hide GUID="{7ad45957-c518-4bd8-95f5-500e9dcc86d7}" /><Hide GUID="{3005fea4-b1c2-4e6c-9687-aa9814799759}" /></Hides></DataType></DataTypes>
+  <Groups>
+    <Group SortOrder="701">
+      <Name>C++</Name>
+      <DisplayName>C++ Modules</DisplayName>
+    </Group>
+  </Groups>
+  <Modules>
+    <Module GUID="{de561753-b26b-4d44-8399-059c1a920711}" Group="C++">
+      <Name>ParentModule</Name>
+      <CLSID ClassFactory="VersionedCpp">{de561753-b26b-4d44-8399-059c1a920711}</CLSID>
+      <Licenses>
+        <License>
+          <LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+          <Comment>TC3 C++</Comment>
+        </License>
+      </Licenses>
+      <InitSequence>PSO</InitSequence>
+      <Contexts>
+        <Context>
+          <Id>1</Id>
+        </Context>
+      </Contexts>
+      <Interfaces>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+        </Interface>
+        <Interface>
+          <Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+        </Interface><Interface><Type GUID="{6e3c37a3-8dbc-4092-a431-0bdb0e779c3e}">I_ParentRegister</Type></Interface>
+      </Interfaces>
+      <Parameters>
+        <Parameter HideParameter="true">
+          <Name>TraceLevelMax</Name>
+          <Comment>Controls the amount of log messages.</Comment>
+          <BaseType GUID="{8007ae3b-86bb-40f2-b385-ef87fcc239a4}">TcTraceLevel</BaseType>
+          <PTCID>#x03002103</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+      </Parameters>
+      <DataAreas />
+      <InterfacePointers>
+        <InterfacePointer>
+          <PTCID>#x03002060</PTCID>
+          <Name>CyclicCaller</Name>
+          <Type GUID="{0300001e-0000-0000-e000-000000000064}">ITcCyclicCaller</Type>
+        </InterfacePointer>
+      </InterfacePointers>
+      <DataPointers />
+      <Deployment />
+    </Module>
+    <Module GUID="{f3c3b4bb-05c8-4a95-8c2c-7796cf509e3c}" Group="C++">
+      <Name>ChildModule</Name>
+      <CLSID ClassFactory="VersionedCpp">{f3c3b4bb-05c8-4a95-8c2c-7796cf509e3c}</CLSID>
+      <Licenses>
+        <License>
+          <LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+          <Comment>TC3 C++</Comment>
+        </License>
+      </Licenses>
+      <InitSequence>PSO</InitSequence>
+      <Contexts ><Context><Id>1</Id></Context></Contexts>
+      <Interfaces>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+        </Interface><Interface><Type GUID="{62dbd04a-4a50-42ef-bfe8-75d8163c328a}">I_ChildIncrement</Type></Interface>
+      </Interfaces>
+      <Parameters />
+      <DataAreas ><DataArea><AreaNo AreaType="OutputSrc">1</AreaNo><Name>Outputs</Name><ContextId>1</ContextId><Symbol><Name>nCnt</Name><BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType></Symbol></DataArea></DataAreas>
+      <InterfacePointers />
+      <DataPointers />
+      <Deployment />
+    </Module>
+  </Modules>
+  <Library>
+    <Name>VersionedCpp</Name>
+    <Version>0.0.0.2</Version>
+  </Library>
+</TcModuleClass>
