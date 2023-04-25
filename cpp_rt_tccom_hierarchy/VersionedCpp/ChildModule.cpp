@@ -102,8 +102,7 @@ HRESULT CChildModule::SetObjStateSO()
 	HRESULT hr = S_OK;
 	if(m_parentObjId)
 	{
-		I_ParentRegisterPtr spParentRegister;
-		spParentRegister.SetOID(m_parentObjId);
+		I_ParentRegisterPtr spParentRegister = m_parentObjId;
 
 		if (SUCCEEDED_DBG(hr = m_spSrv->TcQuerySmartObjectInterface(spParentRegister)))
 		{

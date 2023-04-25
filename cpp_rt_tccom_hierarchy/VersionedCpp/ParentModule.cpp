@@ -219,8 +219,7 @@ HRESULT CParentModule::Register(ITComObject* iPtrChild)
 			return hr;
 		}
 
-		I_ChildIncrementPtr spChildIncrement;
-		spChildIncrement.SetOID(idChild);
+		I_ChildIncrementPtr spChildIncrement = idChild;
 
 		char objectName[50];
 
